@@ -16,6 +16,12 @@ public class FamilyTree {
 
     public void addKin(Human h) {
         familyTree.add(h);
+        if (this.familyTree.contains(h.getMother())) {
+            h.getMother().children.add(h);
+        }
+        if (this.familyTree.contains(h.getFather())) {
+            h.getFather().children.add(h);
+        }
     }
 
     public void removeKin(Human h) {
@@ -37,16 +43,16 @@ public class FamilyTree {
         return null;
     }
 
-    public List<Human> getChildren(String name, String surname) {
+ /*   public HashSet<Human> getAllChildren(String name, String surname) {
         Human parent = getHuman(name, surname);
-        List<Human> children = new ArrayList<>();
-        for (Human h: this.familyTree) {
-            if ((h.getMother() == parent) || (h.getFather() == parent)){
+        HashSet<Human> children = new HashSet<>();
+        for (Human h : this.familyTree) {
+            if ((h.getMother() == parent) || (h.getFather() == parent)) {
                 children.add(h);
             }
         }
         return children;
-    }
+    }*/
 
     public Human getOldest() {
         LocalDate dateDown = LocalDate.MAX;

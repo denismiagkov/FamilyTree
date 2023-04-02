@@ -22,7 +22,9 @@ public class Main {
         //System.out.println(tree.getYoungest());
         //System.out.println(tree.getHuman("Денис", "Мягков"));
         //System.out.println(tree.getHuman("сын ego"));
-        System.out.println(tree.getChildren("Галина", "Бородихина"));
+        //System.out.println(tree.getAllChildren("Галина", "Бородихина"));
+        //System.out.println("=======");
+        //System.out.println(tree.getHuman("Галина", "Бородихина").getChildren());
 
 
     }

@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ public class Human {
     private LocalDate deathDate;
     private Human mother;
     private Human father;
-   private List<Human> children;
+    public HashSet<Human> children;
 
 
     public Human(String status, String name, String surname, LocalDate birthDate, Human mother, Human father) {
@@ -21,38 +22,18 @@ public class Human {
         this.birthDate = birthDate;
         this.mother = mother;
         this.father = father;
-        children = new ArrayList<>();
+        children = new HashSet<>();
     }
 
     public Human(String status, String name, String surname, LocalDate birthDate) {
         this(status, name, surname, birthDate, null, null);
     }
 
-    /*public void addChild(Human h2) {
-        if (this.sex.equals("female")) {
-            if (h2.getMother() != null) {
-                if (this.equals(h2.getMother())) {
-                    if (!this.children.contains(h2))
-                        this.children.add(h2);
-                }
-            }
-        } else if (this.sex.equals("male")) {
-            if (h2.getFather() != null) {
-                if (this.equals(h2.getFather())) {
-                    if (!this.children.contains(h2))
-                        this.children.add(h2);
-                }
-            }
-        }
+    public void addChild(Human h) {
+            children.add(h);
     }
 
-    public void addAllChildren(FamilyTree obj) {
-        for (Human h : obj.familyTree) {
-            this.addChild(h);
-        }
-    }*/
-
-    @Override
+        @Override
     public String toString() {
         return String.format("\n%s: " + "%s %s, " + "дата рождения: %tF, " + "мать: %s, " + "отец: %s", status, surname, name, birthDate, this.getMotherName(), this.getFatherName());
     }
@@ -128,11 +109,11 @@ public class Human {
         this.father = father;
     }
 
-    public List<Human> getChildren() {
+    public HashSet<Human> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Human> children) {
+    public void setChildren(HashSet<Human> children) {
         this.children = children;
     }
 
