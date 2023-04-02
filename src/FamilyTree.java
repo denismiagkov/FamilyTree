@@ -1,5 +1,7 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class FamilyTree {
     HashSet<Human> familyTree;
@@ -20,18 +22,32 @@ public class FamilyTree {
         familyTree.remove(h);
     }
 
+
     public Human getHuman(String name, String surname) {
         for (Human h : this.familyTree) {
             if (name.equals(h.getName()) && surname.equals(h.getSurname())) return h;
         }
         return null;
     }
+
     public Human getHuman(String status) {
         for (Human h : this.familyTree) {
             if (status.equals(h.getStatus())) return h;
         }
         return null;
     }
+
+    public List<Human> getChildren(String name, String surname) {
+        Human parent = getHuman(name, surname);
+        List<Human> children = new ArrayList<>();
+        for (Human h: this.familyTree) {
+            if ((h.getMother() == parent) || (h.getFather() == parent)){
+                children.add(h);
+            }
+        }
+        return children;
+    }
+
     public Human getOldest() {
         LocalDate dateDown = LocalDate.MAX;
         Human human = null;

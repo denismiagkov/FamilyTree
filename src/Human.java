@@ -7,30 +7,30 @@ public class Human {
     private String status;
     private String name;
     private String surname;
-    private String sex;
+    //private String sex;
     public LocalDate birthDate;
     private LocalDate deathDate;
     private Human mother;
     private Human father;
-    private List<Human> children;
+   // private List<Human> children;
 
 
-    public Human(String status, String name, String surname, String sex, LocalDate birthDate, Human mother, Human father) {
+    public Human(String status, String name, String surname, LocalDate birthDate, Human mother, Human father) {
         this.status = status;
         this.name = name;
         this.surname = surname;
-        this.sex = sex;
+        //this.sex = sex;
         this.birthDate = birthDate;
         this.mother = mother;
         this.father = father;
-        children = new ArrayList<>();
+       // children = new ArrayList<>();
     }
 
-    public Human(String status, String name, String surname, String sex, LocalDate birthDate) {
-        this(status, name, surname, sex, birthDate, null, null);
+    public Human(String status, String name, String surname, LocalDate birthDate) {
+        this(status, name, surname, birthDate, null, null);
     }
 
-    public void addChild(Human h2) {
+    /*public void addChild(Human h2) {
         if (this.sex.equals("female")) {
             if (h2.getMother() != null) {
                 if (this.equals(h2.getMother())) {
@@ -52,22 +52,34 @@ public class Human {
         for (Human h : obj.familyTree) {
             this.addChild(h);
         }
-    }
+    }*/
 
     @Override
     public String toString() {
-        return String.format("%s: " + "%s " + "%s, " + "%tF\n", status, surname, name, birthDate);
+        return String.format("%s: " + "%s %s, " + "дата рождения: %tF, " + "мать: %s, " + "отец: %s", status, surname, name, birthDate, this.getMotherName(), this.getFatherName());
     }
 
     @Override
     public boolean equals(Object obj) {
         Human t = (Human) obj;
-        return name == t.name && surname == t.surname && birthDate == t.birthDate;
+        return name == t.name && surname == t.surname;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, birthDate, deathDate, mother, father, children);
+        return Objects.hash(name, surname, birthDate, deathDate, mother, father);
+    }
+
+    public String getMotherName() {
+        if (this.getMother() != null)
+            return String.format("%s %s", this.getMother().surname, this.getMother().name);
+        return "неизвестна";
+    }
+
+    public String getFatherName() {
+        if (this.getFather() != null)
+            return String.format("%s %s", this.getFather().surname, this.getFather().name);
+        return "неизвестен";
     }
 
     public String getName() {
@@ -118,13 +130,13 @@ public class Human {
         this.father = father;
     }
 
-    public List<Human> getChildren() {
+    /*public List<Human> getChildren() {
         return children;
     }
 
     public void setChildren(List<Human> children) {
         this.children = children;
-    }
+    }*/
 
     public String getStatus() {
         return status;
