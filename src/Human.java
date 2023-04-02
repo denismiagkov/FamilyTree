@@ -7,23 +7,21 @@ public class Human {
     private String status;
     private String name;
     private String surname;
-    //private String sex;
     public LocalDate birthDate;
     private LocalDate deathDate;
     private Human mother;
     private Human father;
-   // private List<Human> children;
+   private List<Human> children;
 
 
     public Human(String status, String name, String surname, LocalDate birthDate, Human mother, Human father) {
         this.status = status;
         this.name = name;
         this.surname = surname;
-        //this.sex = sex;
         this.birthDate = birthDate;
         this.mother = mother;
         this.father = father;
-       // children = new ArrayList<>();
+        children = new ArrayList<>();
     }
 
     public Human(String status, String name, String surname, LocalDate birthDate) {
@@ -56,7 +54,7 @@ public class Human {
 
     @Override
     public String toString() {
-        return String.format("%s: " + "%s %s, " + "дата рождения: %tF, " + "мать: %s, " + "отец: %s", status, surname, name, birthDate, this.getMotherName(), this.getFatherName());
+        return String.format("\n%s: " + "%s %s, " + "дата рождения: %tF, " + "мать: %s, " + "отец: %s", status, surname, name, birthDate, this.getMotherName(), this.getFatherName());
     }
 
     @Override
@@ -130,13 +128,13 @@ public class Human {
         this.father = father;
     }
 
-    /*public List<Human> getChildren() {
+    public List<Human> getChildren() {
         return children;
     }
 
     public void setChildren(List<Human> children) {
         this.children = children;
-    }*/
+    }
 
     public String getStatus() {
         return status;
