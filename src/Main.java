@@ -1,5 +1,6 @@
 import java.io.*;
 import java.time.LocalDate;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -28,13 +29,23 @@ public class Main {
         //System.out.println("=======");
         //System.out.println(tree.getHuman("Галина", "Бородихина").getChildren());
 
-        System.out.println(tree);
+        /*System.out.println(tree);
         System.out.println("===");
         SaveAndLoad copy = new SaveAndLoad();
         copy.saveData(tree, "copy9.txt");
         FamilyTree treeRestored = new FamilyTree();
         treeRestored = (FamilyTree) copy.loadData(tree, "copy9.txt");
-        System.out.println(treeRestored);
+        System.out.println(treeRestored);*/
+
+/*        Iterator<Human> iterator = tree.iterator();
+        while (iterator.hasNext()) {
+            Human human = iterator.next();
+            System.out.println(human);
+        }*/
+
+        for (Human human : tree) {
+            System.out.println(human);
+        }
 
     }
 }

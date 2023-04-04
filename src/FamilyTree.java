@@ -1,8 +1,9 @@
 import java.io.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Iterator;
 
-public class FamilyTree implements Serializable {
+public class FamilyTree implements Iterable<Human>, Serializable {
     HashSet<Human> familyTree;
 
     public FamilyTree(HashSet<Human> familyTree) {
@@ -84,4 +85,10 @@ public class FamilyTree implements Serializable {
         }
         return res;
     }
+
+    @Override
+    public Iterator<Human> iterator() {
+        return familyTree.iterator();
+    }
+
 }
