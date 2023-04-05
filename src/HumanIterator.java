@@ -1,11 +1,11 @@
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 public class HumanIterator implements Iterator<Human> {
     private int index;
-    private HashSet<Human> familyTree;
+    private List<Human> familyTree;
 
-    public HumanIterator(HashSet<Human> familyTree) {
+    public HumanIterator(List<Human> familyTree) {
 
         this.familyTree = familyTree;
     }
@@ -17,7 +17,7 @@ public class HumanIterator implements Iterator<Human> {
 
     @Override
     public Human next() {
-        return null;
+        return familyTree.get(index++);
     }
 
 }

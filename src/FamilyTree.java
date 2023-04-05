@@ -1,17 +1,27 @@
 import java.io.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 
 public class FamilyTree implements Iterable<Human>, Serializable {
-    HashSet<Human> familyTree;
+    private List<Human> familyTree;
+    int id;
 
-    public FamilyTree(HashSet<Human> familyTree) {
+    public FamilyTree(ArrayList<Human> familyTree) {
         this.familyTree = familyTree;
     }
 
     public FamilyTree() {
-        this(new HashSet<>());
+        this(new ArrayList<Human>());
+    }
+
+    public void addHuman(String status, String name, String surname, LocalDate birthDate, Human mother, Human father) {
+        this.addKin(new Human(id++, status, name, surname, birthDate, mother, father));
+
+    }
+
+    public void addHuman(String status, String name, String surname, LocalDate birthDate) {
+        this.addKin(new Human(id++, status, name, surname, birthDate));
+
     }
 
     public void addKin(Human h) {
@@ -88,7 +98,19 @@ public class FamilyTree implements Iterable<Human>, Serializable {
 
     @Override
     public Iterator<Human> iterator() {
-        return familyTree.iterator();
+        return new HumanIterator(familyTree);
+    }
+
+    public void sortByName() {
+        familyTree.sort(new HumanComparatorByName());
+    }
+
+    public void sortByID() {
+        familyTree.sort(new HumanComparatorById());
+    }
+
+    public void sortByBirthDate() {
+        familyTree.sort(new HumanComparatorByBirthDate());
     }
 
 }

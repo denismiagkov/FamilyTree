@@ -1,24 +1,39 @@
 import java.io.*;
 import java.time.LocalDate;
-import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         FamilyTree tree = new FamilyTree();
 
-        tree.addKin(new Human("мать матери ego", "Галина", "Бородихина", LocalDate.of(1932, 1, 23)));
-        tree.addKin(new Human("отец матери ego", "Николай", "Мягков", LocalDate.of(1932, 12, 23)));
-        tree.addKin(new Human("сын матери матери ego: ", "Юрий", "Мягков", LocalDate.of(1954, 05, 8), tree.getHuman("Галина", "Бородихина"), tree.getHuman("Николай", "Мягков")));
-        tree.addKin(new Human("мать  ego", "Татьяна", "Мягкова", LocalDate.of(1958, 5, 16), tree.getHuman("Галина", "Бородихина"), tree.getHuman("Николай", "Мягков")));
-        tree.addKin(new Human("дочь матери матери ego: ", "Марина", "Мягкова", LocalDate.of(1964, 8, 5), tree.getHuman("Галина", "Бородихина"), tree.getHuman("Николай", "Мягков")));
-        tree.addKin(new Human("ego", "Денис", "Мягков", LocalDate.of(1984, 1, 22), tree.getHuman("Татьяна", "Мягкова"), null));
-        tree.addKin(new Human("дочь сына матери матери ego", "Наталья", "Мягкова", LocalDate.of(1978, 9, 23), null, tree.getHuman("Юрий", "Мягков")));
-        tree.addKin(new Human("дочь сына матери матери ego", "Лариса", "Мягкова", LocalDate.of(1983, 8, 7), null, tree.getHuman("Юрий", "Мягков")));
-        tree.addKin(new Human("дочь дочери матери матери ego", "Юлия", "Констман", LocalDate.of(1988, 4, 12), tree.getHuman("Марина", "Мягкова"), null));
-        tree.addKin(new Human("сын ego", "Матвей", "Мягков", LocalDate.of(2021, 10, 5), null, tree.getHuman("Денис", "Мягков")));
-        tree.addKin(new Human("дочь матери отца матери ego", "Любовь", "Мягкова", LocalDate.of(1947, 07, 01)));
+        tree.addHuman("мать матери ego", "Галина", "Бородихина", LocalDate.of(1932, 1,
+                23));
+        tree.addHuman("отец матери ego", "Николай", "Мягков", LocalDate.of(1931, 12,
+                23));
+        tree.addHuman("сын матери матери ego: ", "Юрий", "Мягков", LocalDate.of(1954, 05,
+                8), tree.getHuman("Галина", "Бородихина"), tree.getHuman("Николай",
+                "Мягков"));
+        tree.addHuman("мать  ego", "Татьяна", "Мягкова", LocalDate.of(1958, 5,
+                16), tree.getHuman("Галина", "Бородихина"), tree.getHuman("Николай",
+                "Мягков"));
+        tree.addHuman("дочь матери матери ego: ", "Марина", "Мягкова", LocalDate.of(1964,
+                8, 5), tree.getHuman("Галина", "Бородихина"), tree.getHuman("Николай",
+                "Мягков"));
+        tree.addHuman("ego", "Денис", "Мягков", LocalDate.of(1984, 1, 22),
+                tree.getHuman("Татьяна", "Мягкова"), null);
+        tree.addHuman("дочь сына матери матери ego", "Наталья", "Мягкова", LocalDate.of(1978,
+                9, 23), null, tree.getHuman("Юрий", "Мягков"));
+        tree.addHuman("дочь сына матери матери ego", "Лариса", "Мягкова", LocalDate.of(1983,
+                8, 7), null, tree.getHuman("Юрий", "Мягков"));
+        tree.addHuman("дочь дочери матери матери ego", "Юлия", "Констман", LocalDate.of(1988,
+                4, 12), tree.getHuman("Марина", "Мягкова"), null);
+        tree.addHuman("сын ego", "Матвей", "Мягков", LocalDate.of(2021, 10, 5),
+                null, tree.getHuman("Денис", "Мягков"));
+        tree.addHuman("дочь матери отца матери ego", "Любовь", "Мягкова", LocalDate.of(1947,
+                07, 01));
 
-        tree.getHuman("сын ego").setMother(new Human("мать сына ego", " Светлана", "Шемякина", LocalDate.of(1988, 04, 02)));
+        //tree.getHuman("сын ego").setMother(new Human("мать сына ego", " Светлана", "Шемякина", LocalDate.of(1988, 04,
+        // 02)));
+
 
         //System.out.println(tree);
         //System.out.println(tree.getOldest());
@@ -29,23 +44,29 @@ public class Main {
         //System.out.println("=======");
         //System.out.println(tree.getHuman("Галина", "Бородихина").getChildren());
 
-        /*System.out.println(tree);
+        System.out.println(tree);
         System.out.println("===");
-        SaveAndLoad copy = new SaveAndLoad();
-        copy.saveData(tree, "copy9.txt");
+        InOutTxt copy = new InOutTxt();
+        copy.saveData(tree, "copy11");
         FamilyTree treeRestored = new FamilyTree();
-        treeRestored = (FamilyTree) copy.loadData(tree, "copy9.txt");
-        System.out.println(treeRestored);*/
+        treeRestored = (FamilyTree) copy.loadData(tree, "copy11");
+        System.out.println(treeRestored);
 
 /*        Iterator<Human> iterator = tree.iterator();
         while (iterator.hasNext()) {
             Human human = iterator.next();
             System.out.println(human);
         }*/
-
-        for (Human human : tree) {
+        /*System.out.println(tree);
+        System.out.println("=====");
+        tree.sortByName();
+        System.out.println(tree);
+        System.out.println(tree.getHuman("Денис", "Мягков").getId());
+        tree.sortByBirthDate();
+        System.out.println(tree);
+        tree.sortByID();
+        for (Human human: tree) {
             System.out.println(human);
-        }
-
+        }*/
     }
 }

@@ -1,8 +1,9 @@
 import java.io.*;
 
-public class SaveAndLoad{
+public class InOutXml implements InOut {
 
     public void saveData(Serializable obj, String fileName) throws IOException {
+        fileName = fileName + ".xml";
         FileOutputStream fos = new FileOutputStream(fileName);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(obj);
@@ -10,6 +11,7 @@ public class SaveAndLoad{
     }
 
     public Serializable loadData(Serializable obj, String fileName) throws IOException, ClassNotFoundException {
+        fileName = fileName + ".xml";
         FileInputStream fis = new FileInputStream(fileName);
         ObjectInputStream ois = new ObjectInputStream(fis);
 
