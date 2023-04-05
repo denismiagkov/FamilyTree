@@ -1,10 +1,17 @@
+package FamilyTree;
+
+import Human.Human;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
 public class FamilyTree implements Iterable<Human>, Serializable {
     private List<Human> familyTree;
-    int id;
+
+    public List<Human> getFamilyTree() {
+        return familyTree;
+    }
 
     public FamilyTree(ArrayList<Human> familyTree) {
         this.familyTree = familyTree;
@@ -12,16 +19,6 @@ public class FamilyTree implements Iterable<Human>, Serializable {
 
     public FamilyTree() {
         this(new ArrayList<Human>());
-    }
-
-    public void addHuman(String status, String name, String surname, LocalDate birthDate, Human mother, Human father) {
-        this.addKin(new Human(id++, status, name, surname, birthDate, mother, father));
-
-    }
-
-    public void addHuman(String status, String name, String surname, LocalDate birthDate) {
-        this.addKin(new Human(id++, status, name, surname, birthDate));
-
     }
 
     public void addKin(Human h) {
@@ -52,10 +49,10 @@ public class FamilyTree implements Iterable<Human>, Serializable {
         return null;
     }
 
-    /*public HashSet<Human> getAllChildren(String name, String surname) {
-        Human parent = getHuman(name, surname);
-        HashSet<Human> children = new HashSet<>();
-        for (Human h : this.familyTree) {
+    /*public HashSet<Human.Human> getAllChildren(String name, String surname) {
+        Human.Human parent = getHuman(name, surname);
+        HashSet<Human.Human> children = new HashSet<>();
+        for (Human.Human h : this.familyTree) {
             if ((h.getMother() == parent) || (h.getFather() == parent)) {
                 children.add(h);
             }
@@ -99,18 +96,6 @@ public class FamilyTree implements Iterable<Human>, Serializable {
     @Override
     public Iterator<Human> iterator() {
         return new HumanIterator(familyTree);
-    }
-
-    public void sortByName() {
-        familyTree.sort(new HumanComparatorByName());
-    }
-
-    public void sortByID() {
-        familyTree.sort(new HumanComparatorById());
-    }
-
-    public void sortByBirthDate() {
-        familyTree.sort(new HumanComparatorByBirthDate());
     }
 
 }

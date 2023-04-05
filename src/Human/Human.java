@@ -1,3 +1,5 @@
+package Human;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -28,6 +30,10 @@ public class Human implements Serializable {
 
     public Human(int id, String status, String name, String surname, LocalDate birthDate) {
         this(id, status, name, surname, birthDate, null, null);
+    }
+
+    public Human(String status, String name, String surname, LocalDate birthDate) {
+        this(-1, status, name, surname, birthDate, null, null);
     }
 
     public void addChild(Human h) {

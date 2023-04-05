@@ -1,3 +1,7 @@
+package FamilyTree;
+
+import Human.Human;
+
 import java.util.Iterator;
 import java.util.List;
 

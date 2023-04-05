@@ -1,9 +1,11 @@
+package FileOperations;
+
 import java.io.*;
 
-public class InOutTxt implements InOut {
+public class InOutXml implements InOut {
 
     public void saveData(Serializable obj, String fileName) throws IOException {
-        fileName = fileName + ".txt";
+        fileName = fileName + ".xml";
         FileOutputStream fos = new FileOutputStream(fileName);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(obj);
@@ -11,7 +13,7 @@ public class InOutTxt implements InOut {
     }
 
     public Serializable loadData(Serializable obj, String fileName) throws IOException, ClassNotFoundException {
-        fileName = fileName + ".txt";
+        fileName = fileName + ".xml";
         FileInputStream fis = new FileInputStream(fileName);
         ObjectInputStream ois = new ObjectInputStream(fis);
 

@@ -1,6 +1,6 @@
-import java.time.LocalDate;
+package Human;
+
 import java.util.Comparator;
-import java.util.Date;
 
 public class HumanComparatorByBirthDate implements Comparator<Human> {
     @Override
