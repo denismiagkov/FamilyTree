@@ -1,14 +1,17 @@
 import FamilyTree.FamilyTree;
-import FileOperations.InOutTxt;
 
 import java.io.*;
 import java.time.LocalDate;
 
+import FileOperations.InOutTxt;
 import Human.Human;
+import Presenter.Presenter;
+import Service.Service;
+import UI.Console;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        FamilyTree<Human> tree = new FamilyTree<Human>();
+    /*    FamilyTree<Human> tree = new FamilyTree<Human>();
         Service service = new Service(tree);
 
         service.addHuman("мать матери ego", "Галина", "Бородихина", LocalDate.of(1932, 1,
@@ -39,8 +42,8 @@ public class Main {
 
         tree.getHuman("сын ego").setMother(new Human("мать сына ego", " Светлана", "Шемякина",
                 LocalDate.of(1988, 4, 2)));
-
-
+*/
+/*
         //System.out.println(tree);
         //System.out.println(tree.getOldest());
         //System.out.println(tree.getYoungest());
@@ -53,21 +56,21 @@ public class Main {
 
 
 
-       /* System.out.println(tree);
+       *//* System.out.println(tree);
         System.out.println("===");
         InOutTxt copy = new InOutTxt();
         copy.saveData(tree, "copy15");
         FamilyTree <Human> treeRestored = new FamilyTree();
         treeRestored = (FamilyTree) copy.loadData("copy15");
-        System.out.println(treeRestored);*/
+        System.out.println(treeRestored);*//*
 
-/*        Iterator<Human.Human> iterator = tree.iterator();
+*//*        Iterator<Human.Human> iterator = tree.iterator();
         while (iterator.hasNext()) {
             Human.Human human = iterator.next();
             System.out.println(human);
-        }*/
+        }*//*
 
-       /* System.out.println(tree);
+       *//* System.out.println(tree);
         System.out.println("=====");
         service.sortByName();
         System.out.println(tree);
@@ -78,5 +81,13 @@ public class Main {
         for (Human human : tree) {
             System.out.printf("%d %s\n", human.getId(), human.getName());
         }*/
+
+
+        InOutTxt copy = new InOutTxt();
+        FamilyTree <Human> tree = (FamilyTree) copy.loadData("tree");
+        Service service = new Service(tree);
+        Console view = new Console(tree);
+        Presenter presenter = new Presenter(service, view);
+        view.start();
     }
 }

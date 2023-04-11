@@ -1,4 +1,5 @@
 import Human.Human;
+import Presenter.Presenter;
 
 public interface View {
     void setPresenter(Presenter presenter); // связывает View с  Presenter
