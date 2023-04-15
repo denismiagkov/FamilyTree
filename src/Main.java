@@ -42,7 +42,8 @@ public class Main {
 
         tree.getHuman("сын ego").setMother(new Human("мать сына ego", " Светлана", "Шемякина",
                 LocalDate.of(1988, 4, 2)));
-*/
+
+        */
 /*
         //System.out.println(tree);
         //System.out.println(tree.getOldest());
@@ -85,6 +86,7 @@ public class Main {
 
         InOutTxt copy = new InOutTxt();
         FamilyTree <Human> tree = (FamilyTree) copy.loadData("tree");
+        //FamilyTree<Human> tree = new FamilyTree<Human>();
         Service service = new Service(tree);
         Console view = new Console(tree);
         Presenter presenter = new Presenter(service, view);

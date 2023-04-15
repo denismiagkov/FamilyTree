@@ -31,5 +31,40 @@ public class Presenter {
         service.saveTree();
     }
 
+    public void setStatus(String name, String surname, String newStatus) {
+        service.setStatus(name, surname, newStatus);
+    }
+
+    public void setName(String name, String surname, String newName) {
+        service.setName(name, surname, newName);
+    }
+
+    public void setSurname(String name, String surname, String newSurname) {
+        service.setSurname(name, surname, newSurname);
+    }
+
+    public void setBirthDate(String name, String surname, int year, int month, int day) {
+        service.setBirthDate(name, surname, year, month, day);
+    }
+
+    public void setMother(String name, String surname, String motherName, String motherSurname) {
+        service.setMother(name, surname, motherName, motherSurname);
+    }
+
+    public void setFather(String name, String surname, String fatherName, String fatherSurname) {
+        service.setFather(name, surname, fatherName, fatherSurname);
+    }
+
+    public void sortByName(){
+        service.sortByName();
+    }
+
+    public void sortByBirthDate(){
+        service.sortByBirthDate();
+    }
+
+    public void sortByID(){
+        service.sortByID();
+    }
 
 }

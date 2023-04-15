@@ -13,6 +13,7 @@ import java.time.LocalDate;
 
 public class Service {
     private int id;
+    private Human human;
     private FamilyTree familyTree;
 
     public Service(FamilyTree familyTree) {
@@ -51,7 +52,31 @@ public class Service {
     public void loadTree() throws IOException, ClassNotFoundException {
         InOutTxt copy = new InOutTxt();
         FamilyTree tree = (FamilyTree) copy.loadData("tree");
-
-
     }
+
+    public void setStatus(String name, String surname, String newStatus) {
+        familyTree.getHuman(name, surname).setStatus(newStatus);
+    }
+
+    public void setName(String name, String surname, String newName) {
+        familyTree.getHuman(name, surname).setName(newName);
+    }
+
+    public void setSurname(String name, String surname, String newSurname) {
+        familyTree.getHuman(name, surname).setSurname(newSurname);
+    }
+
+    public void setBirthDate(String name, String surname, int year, int month, int day) {
+        familyTree.getHuman(name, surname).setBirthDate(LocalDate.of(year, month, day));
+    }
+
+    public void setMother(String name, String surname, String motherName, String motherSurname) {
+        familyTree.getHuman(name, surname).setMother(familyTree.getHuman(motherName, motherSurname));
+    }
+
+    public void setFather(String name, String surname, String fatherName, String fatherSurname) {
+        familyTree.getHuman(name, surname).setFather(familyTree.getHuman(fatherName, fatherSurname));
+    }
+
+
 }

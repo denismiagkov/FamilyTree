@@ -1,5 +1,6 @@
-package UI.Commands;
+package UI.Commands.GetFamilyTree;
 
+import UI.Commands.Command;
 import UI.Console;
 
 public class GetFamilyTree extends Command {

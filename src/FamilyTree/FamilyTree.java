@@ -1,11 +1,13 @@
 package FamilyTree;
 
+import Human.Human;
 import Human.Subject;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
-public class FamilyTree <E extends Subject<E>> implements Iterable<E>, Serializable {
+public class FamilyTree<E extends Subject<E>> implements Iterable<E>, Serializable {
     private List<E> familyTree;
 
     public List<E> getFamilyTree() {
@@ -97,4 +99,8 @@ public class FamilyTree <E extends Subject<E>> implements Iterable<E>, Serializa
         return new HumanIterator<>(familyTree);
     }
 
+    public boolean containsOf(String name, String surname) {
+        if (familyTree.contains(this.getHuman(name, surname))) return true;
+        else return false;
+    }
 }

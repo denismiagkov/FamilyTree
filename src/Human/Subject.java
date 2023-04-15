@@ -14,6 +14,15 @@ public abstract class Subject<E>{
     public abstract String getName();
 
 
+    public abstract void setStatus(String newStatus);
 
+    public abstract void setName(String newName);
 
+    public abstract void setSurname(String newSurname);
+
+    public abstract void setBirthDate(LocalDate of);
+    public abstract void setMother(E human);
+
+    public void setFather(E human) {
+    }
 }
