@@ -12,6 +12,8 @@ public abstract class Subject<E>{
     public abstract String getStatus();
     public abstract LocalDate getBirthDate();
     public abstract String getName();
+    public abstract HashSet<E> getChildren();
+
 
 
     public abstract void setStatus(String newStatus);
@@ -25,4 +27,5 @@ public abstract class Subject<E>{
 
     public void setFather(E human) {
     }
+
 }

@@ -5,9 +5,11 @@ import Human.Human;
 import Presenter.Presenter;
 import UI.Commands.ChangeInfo.MenuChangeInfo;
 import UI.Commands.GetFamilyTree.MenuGetFamilyTree;
+import UI.Commands.GetHumanInfo.MenuGetHumanInfo;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Console implements View {
@@ -18,6 +20,7 @@ public class Console implements View {
     private FamilyTree<Human> tree;
     private MenuChangeInfo menuChangeInfo;
     private MenuGetFamilyTree menuGetFamilyTree;
+    private MenuGetHumanInfo menuGetHumanInfo;
 
     public Console(FamilyTree<Human> tree) {
         this.scanner = new Scanner(System.in);
@@ -26,6 +29,7 @@ public class Console implements View {
         this.tree = tree;
         this.menuChangeInfo = new MenuChangeInfo(this);
         this.menuGetFamilyTree = new MenuGetFamilyTree(this);
+        this.menuGetHumanInfo = new MenuGetHumanInfo(this);
     }
 
     @Override
@@ -63,6 +67,10 @@ public class Console implements View {
 
     private boolean checkGetInfo(String text) {
         return text.matches("[0-9]+") && Integer.parseInt(text) <= menuGetFamilyTree.getSize() && Integer.parseInt(text) > 0;
+    }
+
+    private boolean checkHumanInfo(String text) {
+        return text.matches("[0-9]+") && Integer.parseInt(text) <= menuGetHumanInfo.getSize() && Integer.parseInt(text) > 0;
     }
 
     public void fail() {
@@ -242,4 +250,96 @@ public class Console implements View {
         System.out.println(presenter.getFamilyTree());
         System.out.println();
     }
+
+    public void removeHuman() {
+        String name = enterName();
+        String surname = enterSurname();
+        if (tree.containsOf(name, surname)) {
+            presenter.removeHuman(name, surname);
+            System.out.printf("Запись %s %s удалена из генеалогического дерева\n", name, surname);
+        } else {
+            System.out.println("Учетная запись с такими данными не существует!");
+        }
+    }
+
+    public void getHumanInfo() {
+        while (work) {
+            System.out.println(menuGetHumanInfo.print());
+            String choice = scanner.nextLine();
+            if (checkHumanInfo(choice)) {
+                menuGetHumanInfo.execute(Integer.parseInt(choice));
+            } else {
+                fail();
+            }
+        }
+    }
+
+    public void getHuman() {
+        String name = enterName();
+        String surname = enterSurname();
+        if (tree.containsOf(name, surname)) {
+            System.out.printf("Общие сведения о %s %s:\n", surname, name);
+            System.out.println(presenter.getHuman(name, surname));
+            System.out.print("дети: ");
+            System.out.println(presenter.getChildren(name, surname));
+        } else {
+            System.out.println("Учетная запись с такими данными не существует!");
+        }
+    }
+
+    public void getStatus() {
+        String name = enterName();
+        String surname = enterSurname();
+        if (tree.containsOf(name, surname)) {
+            System.out.printf("%s %s. Статус: ", name, surname);
+            System.out.println(presenter.getStatus(name, surname));
+        } else {
+            System.out.println("Учетная запись с такими данными не существует!");
+        }
+    }
+
+    public void getBirthDate() {
+        String name = enterName();
+        String surname = enterSurname();
+        if (tree.containsOf(name, surname)) {
+            System.out.printf("%s %s. День рождения: ", name, surname);
+            System.out.println(presenter.getBirthDate(name, surname));
+        } else {
+            System.out.println("Учетная запись с такими данными не существует!");
+        }
+    }
+
+    public void getMother() {
+        String name = enterName();
+        String surname = enterSurname();
+        if (tree.containsOf(name, surname)) {
+            System.out.printf("%s %s. Мать: ", name, surname);
+            System.out.println(presenter.getMother(name, surname));
+        } else {
+            System.out.println("Учетная запись с такими данными не существует!");
+        }
+    }
+
+    public void getFather() {
+        String name = enterName();
+        String surname = enterSurname();
+        if (tree.containsOf(name, surname)) {
+            System.out.printf("%s %s. Отец: ", name, surname);
+            System.out.println(presenter.getFather(name, surname));
+        } else {
+            System.out.println("Учетная запись с такими данными не существует!");
+        }
+    }
+
+    public void getChildren() {
+        String name = enterName();
+        String surname = enterSurname();
+        if (tree.containsOf(name, surname)) {
+            System.out.printf("%s %s. Дети: ", name, surname);
+            System.out.println(presenter.getChildren(name, surname));
+        } else {
+            System.out.println("Учетная запись с такими данными не существует!");
+        }
+    }
 }
+

@@ -3,6 +3,8 @@ package UI;
 import UI.Commands.*;
 import UI.Commands.ChangeInfo.ChangeInfo;
 import UI.Commands.GetFamilyTree.GetFamilyTree;
+import UI.Commands.GetFamilyTree.RemoveHuman;
+import UI.Commands.GetHumanInfo.GetHumanInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,9 @@ public class Menu {
         this.list = new ArrayList<>();
         list.add(new AddHuman(console));
         list.add(new ChangeInfo(console));
+        list.add(new RemoveHuman(console));
         list.add(new GetFamilyTree(console));
+        list.add(new GetHumanInfo(console));
         list.add(new SaveChanges(console));
         list.add(new Finish(console));
     }

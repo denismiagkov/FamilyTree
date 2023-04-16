@@ -8,8 +8,8 @@ import Human.HumanComparatorByBirthDate;
 import FileOperations.InOutTxt;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
 
 public class Service {
     private int id;
@@ -79,4 +79,39 @@ public class Service {
     }
 
 
+    public void removeHuman(String name, String surname) {
+        familyTree.removeKin(familyTree.getHuman(name, surname));
+    }
+
+
+    public Human getHuman(String name, String surname) {
+        return (Human) familyTree.getHuman(name, surname);
+    }
+
+    public String getStatus(String name, String surname) {
+        return familyTree.getHuman(name, surname).getStatus();
+    }
+
+
+    public LocalDate getBirthDate(String name, String surname) {
+        return familyTree.getHuman(name, surname).getBirthDate();
+    }
+
+    public Human getMother(String name, String surname) {
+        return (Human)familyTree.getHuman(name, surname).getMother();
+    }
+
+    public Human getFather(String name, String surname) {
+        return (Human)familyTree.getHuman(name, surname).getFather();
+    }
+
+    /*public HashSet <Human> getChildren(String name, String surname) {
+        return (HashSet<Human>) familyTree.getHuman(name, surname).getChildren();
+
+    }*/
+
+    public HashSet <Human> getChildren(String name, String surname) {
+        return familyTree.getAllChildren(name, surname);
+
+    }
 }

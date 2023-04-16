@@ -7,6 +7,7 @@ import UI.View;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashSet;
 
 public class Presenter {
     private Service service;
@@ -65,6 +66,35 @@ public class Presenter {
 
     public void sortByID(){
         service.sortByID();
+    }
+
+    public void removeHuman(String name, String surname) {
+        service.removeHuman(name, surname);
+    }
+
+    public Human getHuman(String name, String surname) {
+        return service.getHuman(name, surname);
+
+}
+
+    public String getStatus(String name, String surname) {
+        return service.getStatus(name, surname);
+    }
+
+    public LocalDate getBirthDate(String name, String surname) {
+        return service.getBirthDate(name, surname);
+    }
+
+    public Human getMother(String name, String surname) {
+        return service.getMother(name, surname);
+    }
+
+    public Human getFather(String name, String surname) {
+        return service.getFather(name, surname);
+    }
+
+    public HashSet<Human> getChildren(String name, String surname) {
+        return service.getChildren(name, surname);
     }
 
 }

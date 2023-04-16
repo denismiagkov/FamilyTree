@@ -11,7 +11,7 @@ import UI.Console;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-    /*    FamilyTree<Human> tree = new FamilyTree<Human>();
+      /* FamilyTree<Human> tree = new FamilyTree<Human>();
         Service service = new Service(tree);
 
         service.addHuman("мать матери ego", "Галина", "Бородихина", LocalDate.of(1932, 1,
@@ -41,10 +41,10 @@ public class Main {
                 7, 1));
 
         tree.getHuman("сын ego").setMother(new Human("мать сына ego", " Светлана", "Шемякина",
-                LocalDate.of(1988, 4, 2)));
+                LocalDate.of(1988, 4, 2)));*/
 
-        */
-/*
+
+
         //System.out.println(tree);
         //System.out.println(tree.getOldest());
         //System.out.println(tree.getYoungest());
@@ -52,12 +52,12 @@ public class Main {
         //System.out.println(tree.getHuman("сын ego"));
         //System.out.println(tree.getAllChildren("Галина", "Бородихина"));
         //System.out.println("=======");
-        //System.out.println(tree.getHuman("Галина", "Бородихина").getChildren());
+        //System.out.println(service.getChildren("Галина", "Бородихина"));
         //System.out.println(tree.getHuman("Денис", "Мягков").getChildren());
 
 
 
-       *//* System.out.println(tree);
+       /* System.out.println(tree);
         System.out.println("===");
         InOutTxt copy = new InOutTxt();
         copy.saveData(tree, "copy15");
