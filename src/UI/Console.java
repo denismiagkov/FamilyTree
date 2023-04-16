@@ -106,6 +106,7 @@ public class Console implements View {
         Human father = null;
         if ((fatherName != null) && (fatherSurname != null)) father = tree.getHuman(fatherName, fatherSurname);
         presenter.addHuman(status, name, surname, birthDate, mother, father);
+        System.out.printf("Человек %s %s добавлен\n", name, surname);
     }
 
     public void getFamilyTree() {
@@ -278,7 +279,7 @@ public class Console implements View {
         String name = enterName();
         String surname = enterSurname();
         if (tree.containsOf(name, surname)) {
-            System.out.printf("Общие сведения о %s %s:\n", surname, name);
+            System.out.printf("Общие сведения о %s %s:", surname, name);
             System.out.println(presenter.getHuman(name, surname));
             System.out.print("дети: ");
             System.out.println(presenter.getChildren(name, surname));
