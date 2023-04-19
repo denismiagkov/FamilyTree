@@ -7,8 +7,6 @@ import UI.Console;
 
 public class ChangeInfo extends Command {
 
-    FamilyTree<Human> familyTree;
-
     public ChangeInfo(Console console) {
         super(console);
     }
