@@ -1,8 +1,7 @@
-package UI.Commands.GetFamilyTree;
+package UI.Commands;
 
 import FamilyTree.FamilyTree;
 import Human.Human;
-import UI.Commands.Command;
 import UI.Console;
 
 public class RemoveHuman extends Command {

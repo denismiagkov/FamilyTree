@@ -11,7 +11,6 @@ public class ChangeInfo extends Command {
         super(console);
     }
 
-
     @Override
     public String getDescription() {
         return "Изменить сведения о человеке";

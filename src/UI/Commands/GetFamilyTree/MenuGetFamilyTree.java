@@ -34,5 +34,4 @@ public class MenuGetFamilyTree {
     public void execute(int choice){
         listGetFamilyTree.get(choice-1).execute();
     }
-
 }

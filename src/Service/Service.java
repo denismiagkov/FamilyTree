@@ -16,7 +16,6 @@ public class Service {
     private FamilyTree familyTree;
     private InOutTxt copy;
 
-
     public Service(FamilyTree familyTree) {
         this.familyTree = familyTree;
         this.copy = new InOutTxt();
@@ -78,11 +77,9 @@ public class Service {
         familyTree.getHuman(name, surname).setFather(familyTree.getHuman(fatherName, fatherSurname));
     }
 
-
     public void removeHuman(String name, String surname) {
         familyTree.removeKin(familyTree.getHuman(name, surname));
     }
-
 
     public Human getHuman(String name, String surname) {
         return (Human) familyTree.getHuman(name, surname);
@@ -91,7 +88,6 @@ public class Service {
     public String getStatus(String name, String surname) {
         return familyTree.getHuman(name, surname).getStatus();
     }
-
 
     public LocalDate getBirthDate(String name, String surname) {
         return familyTree.getHuman(name, surname).getBirthDate();
@@ -111,6 +107,5 @@ public class Service {
 
     public HashSet <Human> getChildren(String name, String surname) {
         return familyTree.getAllChildren(name, surname);
-
     }
 }
