@@ -1,4 +1,4 @@
-package UI.Commands.GetHumanInfo;
+package UI.Commands;
 
 import UI.Commands.Command;
 import UI.Console;

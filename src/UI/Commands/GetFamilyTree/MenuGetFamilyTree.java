@@ -1,6 +1,7 @@
 package UI.Commands.GetFamilyTree;
 
 import UI.Commands.Option;
+import UI.Commands.ReturnToMenu;
 import UI.Console;
 
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ public class MenuGetFamilyTree {
         listGetFamilyTree.add(new SortByID(console));
         listGetFamilyTree.add(new SortByName(console));
         listGetFamilyTree.add(new SortByBirthDate(console));
+        listGetFamilyTree.add(new ReturnToMenu(console));
+
     }
 
     public String print(){
