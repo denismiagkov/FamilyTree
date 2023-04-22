@@ -19,8 +19,8 @@ public class Presenter {
         view.setPresenter(this);
     }
 
-    public FamilyTree getFamilyTree(){
-        return service.getFamilyTree();
+    public String getFamilyTree(){
+        return service.getFamilyTree().toString();
 
     }
 
@@ -72,8 +72,8 @@ public class Presenter {
         service.removeHuman(name, surname);
     }
 
-    public Human getHuman(String name, String surname) {
-        return service.getHuman(name, surname);
+    public String getHuman(String name, String surname) {
+        return service.getHuman(name, surname).toString();
 }
 
     public String getStatus(String name, String surname) {
@@ -84,16 +84,16 @@ public class Presenter {
         return service.getBirthDate(name, surname);
     }
 
-    public Human getMother(String name, String surname) {
-        return service.getMother(name, surname);
+    public String getMother(String name, String surname) {
+        return service.getMother(name, surname).toString();
     }
 
-    public Human getFather(String name, String surname) {
-        return service.getFather(name, surname);
+    public String getFather(String name, String surname) {
+        return service.getFather(name, surname).toString();
     }
 
-    public HashSet<Human> getChildren(String name, String surname) {
-        return service.getChildren(name, surname);
+    public String getChildren(String name, String surname) {
+        return service.getChildren(name, surname).toString();
     }
 
 }
