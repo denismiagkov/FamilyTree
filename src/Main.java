@@ -88,7 +88,7 @@ public class Main {
         FamilyTree <Human> tree = (FamilyTree) copy.loadData("tree");
         //FamilyTree<Human> tree = new FamilyTree<Human>();
         Service service = new Service(tree);
-        Console view = new Console(tree);
+        Console view = new Console();
         Presenter presenter = new Presenter(service, view);
         view.start();
     }
